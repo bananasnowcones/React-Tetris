@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 // Will make all our cells span across as squares
-export const StyleStage = styled.div`
+export const StyledStage = styled.div`
     display: grid;
     grid-template-rows: repeat(
         ${props => props.height},
