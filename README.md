@@ -1,3 +1,17 @@
+# React Tetris To Do list:
+
+1. Hold feature
+2. Music
+3. Show next pieces
+4. Fast drop
+
+
+
+
+
+
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
