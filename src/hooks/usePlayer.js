@@ -1,12 +1,12 @@
 import { useState, useCallback } from 'react';
 
-import { TETRIMINOS, randomTetrimino } from '../tetriminos';
+import { TETROMINOS, randomTetromino } from '../tetrominos';
 import { checkCollision, STAGE_WIDTH } from '../gameHelpers';
 
 export const usePlayer = () => {
   const [player, setPlayer] = useState({
     pos: { x: 0, y: 0 },
-    tetrimino: TETRIMINOS[0].shape,
+    tetromino: TETROMINOS[0].shape,
     collided: false,
   });
 
@@ -23,7 +23,7 @@ export const usePlayer = () => {
 
   const playerRotate = (stage, direction) => {
     const clonedPlayer = JSON.parse(JSON.stringify(player));
-    clonedPlayer.tetrimino = rotate(clonedPlayer.tetrimino, direction);
+    clonedPlayer.tetromino = rotate(clonedPlayer.tetromino, direction);
 
     // Check for collision when rotating out of bounds or into another piece
     const pos = clonedPlayer.pos.x;
@@ -31,8 +31,8 @@ export const usePlayer = () => {
     while (checkCollision(clonedPlayer, stage, {x:0, y:0})) {
         clonedPlayer.pos.x += offset;
         offset = -(offset + (offset > 0 ? 1 : -1));
-        if (offset > clonedPlayer.tetrimino[0].length) {
-          rotate(clonedPlayer.tetrimino, -direction);
+        if (offset > clonedPlayer.tetromino[0].length) {
+          rotate(clonedPlayer.tetromino, -direction);
           clonedPlayer.pos.x = pos;
         }
     }
@@ -51,7 +51,7 @@ export const usePlayer = () => {
   const resetPlayer = useCallback(() => {
     setPlayer({
       pos: { x: STAGE_WIDTH / 2 - 2, y: 0 },
-      tetrimino: randomTetrimino().shape,
+      tetromino: randomTetromino().shape,
       collided: false,
     })
   }, [])
